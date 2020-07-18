@@ -11,27 +11,19 @@ const map = (arr,func) => {
     }
     return newArr
 }
-// const reduce = (arr) => {
-//     let allNums = true
-//     for (const x of arr) {
-//         if (!!Number(x)) {
-//             allNums = false
-//         }
-//     }
-//     if (allNums) {
-//         innerFunc(startingPoint=0) {
-//             const sum = startingPoint
-//             for (const x of arr) {
-//                 sum+=x
-//             }
-//             return sum
-//         }
-//     } else {
-//         for (const x of arr) {
-//             if (!!x) {
-//                 return true
-//             }
-//         }
-//         return false
-//     }
-// }
+
+const reduce = (array, callback, start) => {
+    if (start === undefined) {
+      let accum = array[0]
+      for (let i = 1; i < array.length; i++) {
+        accum = callback(accum, array[i])
+      }
+      return accum
+    } else {
+      let accum = start
+      for (let i = 0; i < array.length; i++) {
+        accum = callback(accum, array[i])
+      }
+      return accum
+    }
+  }
